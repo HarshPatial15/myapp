@@ -6,7 +6,7 @@ const VERSION = process.env.APP_VERSION || 'v1';
 
 app.get('/', (req, res) => {
   res.json({
-    message: 'Hello from MyApp!',
+    message: 'Hello from MyApp v2 - Gitops is working!',
     environment: ENV,
     version: VERSION,
     timestamp: new Date().toISOString()
