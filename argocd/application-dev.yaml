@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-dev
+  namespace: argocd
+spec:
+  project: default
+
+  # Where is your code?
+  source:
+    repoURL: https://github.com/YOUR-USERNAME/YOUR-REPO
+    targetRevision: dev          # watches DEV branch!
+    path: helm/myapp
+    helm:
+      valueFiles:
+      - values.yaml
+      - values-dev.yaml          # dev overrides!
+
+  # Where to deploy?
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+
+  # Auto sync = push code = auto deploy!
+  syncPolicy:
+    automated:
+      prune: true                # delete old resources
+      selfHeal: true             # fix manual changes
+    syncOptions:
+    - CreateNamespace=true       # create namespace if missing

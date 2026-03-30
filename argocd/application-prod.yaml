@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-prod
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/YOUR-USERNAME/YOUR-REPO
+    targetRevision: main         # watches MAIN branch!
+    path: helm/myapp
+    helm:
+      valueFiles:
+      - values.yaml              # prod uses default values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+
+  # Manual sync for production!
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    # NO automated sync = human reviews before deploy!

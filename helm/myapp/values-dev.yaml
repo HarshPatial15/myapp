@@ -1,0 +1,20 @@
+# Dev environment overrides
+replicaCount: 1
+
+image:
+  tag: "dev-latest"
+
+ingress:
+  host: myapp-dev.local
+
+resources:
+  requests:
+    memory: "32Mi"
+    cpu: "50m"
+  limits:
+    memory: "64Mi"
+    cpu: "100m"
+
+env:
+  APP_ENV: "development"
+  APP_VERSION: "v1-dev"
