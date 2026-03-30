@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/YOUR-USERNAME/YOUR-REPO
+    repoURL: https://github.com/HarshPatial15/myapp
     targetRevision: main         # watches MAIN branch!
     path: helm/myapp
     helm:

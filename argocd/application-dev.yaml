@@ -8,7 +8,7 @@ spec:
 
   # Where is your code?
   source:
-    repoURL: https://github.com/YOUR-USERNAME/YOUR-REPO
+    repoURL: https://github.com/HarshPatial15/myapp
     targetRevision: dev          # watches DEV branch!
     path: helm/myapp
     helm:
